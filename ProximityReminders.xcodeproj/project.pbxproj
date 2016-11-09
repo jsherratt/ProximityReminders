@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D4342E6C1DD27C4A004ED81D /* ReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4342E6B1DD27C4A004ED81D /* ReminderTableViewController.swift */; };
 		D45F6F081DD277B900CAEE60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F6F071DD277B900CAEE60 /* AppDelegate.swift */; };
-		D45F6F0A1DD277B900CAEE60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F6F091DD277B900CAEE60 /* ViewController.swift */; };
 		D45F6F0D1DD277B900CAEE60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D45F6F0B1DD277B900CAEE60 /* Main.storyboard */; };
 		D45F6F101DD277B900CAEE60 /* ProximityReminders.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D45F6F0E1DD277B900CAEE60 /* ProximityReminders.xcdatamodeld */; };
 		D45F6F121DD277B900CAEE60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D45F6F111DD277B900CAEE60 /* Assets.xcassets */; };
 		D45F6F151DD277B900CAEE60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D45F6F131DD277B900CAEE60 /* LaunchScreen.storyboard */; };
 		D45F6F201DD277B900CAEE60 /* ProximityRemindersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F6F1F1DD277B900CAEE60 /* ProximityRemindersTests.swift */; };
+		D4AFBFE01DD2EE7F00A07902 /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AFBFDF1DD2EE7F00A07902 /* ReminderCell.swift */; };
+		D4AFBFE31DD2EFAE00A07902 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AFBFE21DD2EFAE00A07902 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,9 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D4342E6B1DD27C4A004ED81D /* ReminderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderTableViewController.swift; sourceTree = "<group>"; };
 		D45F6F041DD277B900CAEE60 /* ProximityReminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProximityReminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D45F6F071DD277B900CAEE60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D45F6F091DD277B900CAEE60 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D45F6F0C1DD277B900CAEE60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D45F6F0F1DD277B900CAEE60 /* ProximityReminders.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProximityReminders.xcdatamodel; sourceTree = "<group>"; };
 		D45F6F111DD277B900CAEE60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +40,8 @@
 		D45F6F1B1DD277B900CAEE60 /* ProximityRemindersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProximityRemindersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D45F6F1F1DD277B900CAEE60 /* ProximityRemindersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProximityRemindersTests.swift; sourceTree = "<group>"; };
 		D45F6F211DD277B900CAEE60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4AFBFDF1DD2EE7F00A07902 /* ReminderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderCell.swift; sourceTree = "<group>"; };
+		D4AFBFE21DD2EFAE00A07902 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D4342E6D1DD27CD7004ED81D /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D45F6F131DD277B900CAEE60 /* LaunchScreen.storyboard */,
+				D45F6F161DD277B900CAEE60 /* Info.plist */,
+			);
+			name = SupportingFiles;
+			sourceTree = "<group>";
+		};
 		D45F6EFB1DD277B900CAEE60 = {
 			isa = PBXGroup;
 			children = (
@@ -80,12 +93,13 @@
 			isa = PBXGroup;
 			children = (
 				D45F6F071DD277B900CAEE60 /* AppDelegate.swift */,
-				D45F6F091DD277B900CAEE60 /* ViewController.swift */,
+				D4342E6B1DD27C4A004ED81D /* ReminderTableViewController.swift */,
+				D4AFBFDF1DD2EE7F00A07902 /* ReminderCell.swift */,
+				D4AFBFE21DD2EFAE00A07902 /* CoreDataManager.swift */,
 				D45F6F0B1DD277B900CAEE60 /* Main.storyboard */,
 				D45F6F111DD277B900CAEE60 /* Assets.xcassets */,
-				D45F6F131DD277B900CAEE60 /* LaunchScreen.storyboard */,
-				D45F6F161DD277B900CAEE60 /* Info.plist */,
 				D45F6F0E1DD277B900CAEE60 /* ProximityReminders.xcdatamodeld */,
+				D4342E6D1DD27CD7004ED81D /* SupportingFiles */,
 			);
 			path = ProximityReminders;
 			sourceTree = "<group>";
@@ -204,9 +218,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D45F6F0A1DD277B900CAEE60 /* ViewController.swift in Sources */,
 				D45F6F101DD277B900CAEE60 /* ProximityReminders.xcdatamodeld in Sources */,
 				D45F6F081DD277B900CAEE60 /* AppDelegate.swift in Sources */,
+				D4342E6C1DD27C4A004ED81D /* ReminderTableViewController.swift in Sources */,
+				D4AFBFE31DD2EFAE00A07902 /* CoreDataManager.swift in Sources */,
+				D4AFBFE01DD2EE7F00A07902 /* ReminderCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +430,7 @@
 				D45F6F261DD277B900CAEE60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D45F6F271DD277B900CAEE60 /* Build configuration list for PBXNativeTarget "ProximityRemindersTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +439,7 @@
 				D45F6F291DD277B900CAEE60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
