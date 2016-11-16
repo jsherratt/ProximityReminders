@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D4342E6C1DD27C4A004ED81D /* ReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4342E6B1DD27C4A004ED81D /* ReminderTableViewController.swift */; };
+		D44D09EE1DDBD06200E2B7CA /* ReminderDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44D09ED1DDBD06200E2B7CA /* ReminderDetailTableViewController.swift */; };
+		D44D09F01DDBDB5400E2B7CA /* ReminderTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44D09EF1DDBDB5400E2B7CA /* ReminderTitleCell.swift */; };
+		D44D09F21DDBE18D00E2B7CA /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44D09F11DDBE18D00E2B7CA /* KMPlaceholderTextView.swift */; };
 		D45F6F081DD277B900CAEE60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F6F071DD277B900CAEE60 /* AppDelegate.swift */; };
 		D45F6F0D1DD277B900CAEE60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D45F6F0B1DD277B900CAEE60 /* Main.storyboard */; };
 		D45F6F101DD277B900CAEE60 /* ProximityReminders.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D45F6F0E1DD277B900CAEE60 /* ProximityReminders.xcdatamodeld */; };
@@ -30,6 +33,9 @@
 
 /* Begin PBXFileReference section */
 		D4342E6B1DD27C4A004ED81D /* ReminderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderTableViewController.swift; sourceTree = "<group>"; };
+		D44D09ED1DDBD06200E2B7CA /* ReminderDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderDetailTableViewController.swift; sourceTree = "<group>"; };
+		D44D09EF1DDBDB5400E2B7CA /* ReminderTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderTitleCell.swift; sourceTree = "<group>"; };
+		D44D09F11DDBE18D00E2B7CA /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		D45F6F041DD277B900CAEE60 /* ProximityReminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProximityReminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D45F6F071DD277B900CAEE60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D45F6F0C1DD277B900CAEE60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -71,6 +77,14 @@
 			name = SupportingFiles;
 			sourceTree = "<group>";
 		};
+		D44D09F31DDBE19800E2B7CA /* 3rd Party */ = {
+			isa = PBXGroup;
+			children = (
+				D44D09F11DDBE18D00E2B7CA /* KMPlaceholderTextView.swift */,
+			);
+			name = "3rd Party";
+			sourceTree = "<group>";
+		};
 		D45F6EFB1DD277B900CAEE60 = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +108,11 @@
 			children = (
 				D45F6F071DD277B900CAEE60 /* AppDelegate.swift */,
 				D4342E6B1DD27C4A004ED81D /* ReminderTableViewController.swift */,
+				D44D09ED1DDBD06200E2B7CA /* ReminderDetailTableViewController.swift */,
 				D4AFBFDF1DD2EE7F00A07902 /* ReminderCell.swift */,
+				D44D09EF1DDBDB5400E2B7CA /* ReminderTitleCell.swift */,
 				D4AFBFE21DD2EFAE00A07902 /* CoreDataManager.swift */,
+				D44D09F31DDBE19800E2B7CA /* 3rd Party */,
 				D45F6F0B1DD277B900CAEE60 /* Main.storyboard */,
 				D45F6F111DD277B900CAEE60 /* Assets.xcassets */,
 				D45F6F0E1DD277B900CAEE60 /* ProximityReminders.xcdatamodeld */,
@@ -219,7 +236,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D45F6F101DD277B900CAEE60 /* ProximityReminders.xcdatamodeld in Sources */,
+				D44D09F21DDBE18D00E2B7CA /* KMPlaceholderTextView.swift in Sources */,
 				D45F6F081DD277B900CAEE60 /* AppDelegate.swift in Sources */,
+				D44D09F01DDBDB5400E2B7CA /* ReminderTitleCell.swift in Sources */,
+				D44D09EE1DDBD06200E2B7CA /* ReminderDetailTableViewController.swift in Sources */,
 				D4342E6C1DD27C4A004ED81D /* ReminderTableViewController.swift in Sources */,
 				D4AFBFE31DD2EFAE00A07902 /* CoreDataManager.swift in Sources */,
 				D4AFBFE01DD2EE7F00A07902 /* ReminderCell.swift in Sources */,
