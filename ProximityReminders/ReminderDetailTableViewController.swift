@@ -29,12 +29,14 @@ class ReminderDetailViewController: UITableViewController {
         
         //Customise navigation bar
         navigationItem.title = "Details"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveReminder))
         
         //Customise tableview
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         //Set textview delegate to title cell
         titleCell.textView.delegate = self
+
     }
 
     //---------------------
@@ -43,8 +45,7 @@ class ReminderDetailViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 1 && indexPath.row == 1 {
-            print("Go to location view")
-            //performSegue(withIdentifier: "", sender: self)
+            performSegue(withIdentifier: "SearchLocationView", sender: self)
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
@@ -84,6 +85,14 @@ class ReminderDetailViewController: UITableViewController {
             sender.setOn(true, animated: true)
             locationCell.isHidden = false
         }
+    }
+    
+    //---------------------
+    //MARK: Functions
+    //---------------------
+    @objc func saveReminder() {
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

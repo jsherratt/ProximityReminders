@@ -1,16 +1,16 @@
 //
-//  ReminderCell.swift
+//  SearchLocationCell.swift
 //  ProximityReminders
 //
-//  Created by Joey on 09/11/2016.
+//  Created by Joey on 21/11/2016.
 //  Copyright © 2016 Joe Sherratt. All rights reserved.
 //
 
 import UIKit
 
-class ReminderCell: UITableViewCell {
-    
-    @IBOutlet weak var titleLabel: UILabel!
+class SearchLocationCell: UITableViewCell {
+
+    @IBOutlet weak var locationLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,6 +18,7 @@ class ReminderCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+
     }
 
 }
