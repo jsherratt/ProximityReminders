@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D4342E6C1DD27C4A004ED81D /* ReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4342E6B1DD27C4A004ED81D /* ReminderTableViewController.swift */; };
+		D44C2F961DE6E84E0011236D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2F951DE6E84E0011236D /* Utilities.swift */; };
 		D44D09EE1DDBD06200E2B7CA /* ReminderDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44D09ED1DDBD06200E2B7CA /* ReminderDetailTableViewController.swift */; };
-		D44D09F01DDBDB5400E2B7CA /* ReminderTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44D09EF1DDBDB5400E2B7CA /* ReminderTitleCell.swift */; };
-		D44D09F21DDBE18D00E2B7CA /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44D09F11DDBE18D00E2B7CA /* KMPlaceholderTextView.swift */; };
 		D44F8FD01DE2E67000499620 /* SearchLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F8FCF1DE2E67000499620 /* SearchLocationTableViewController.swift */; };
-		D44F8FD21DE2F33A00499620 /* SearchLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F8FD11DE2F33A00499620 /* SearchLocationCell.swift */; };
 		D44F8FD61DE2FAAD00499620 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44F8FD51DE2FAAD00499620 /* MapKit.framework */; };
 		D44F8FD81DE303BD00499620 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F8FD71DE303BD00499620 /* LocationManager.swift */; };
 		D45F6F081DD277B900CAEE60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F6F071DD277B900CAEE60 /* AppDelegate.swift */; };
@@ -37,11 +35,9 @@
 
 /* Begin PBXFileReference section */
 		D4342E6B1DD27C4A004ED81D /* ReminderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderTableViewController.swift; sourceTree = "<group>"; };
+		D44C2F951DE6E84E0011236D /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		D44D09ED1DDBD06200E2B7CA /* ReminderDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderDetailTableViewController.swift; sourceTree = "<group>"; };
-		D44D09EF1DDBDB5400E2B7CA /* ReminderTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderTitleCell.swift; sourceTree = "<group>"; };
-		D44D09F11DDBE18D00E2B7CA /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		D44F8FCF1DE2E67000499620 /* SearchLocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewController.swift; sourceTree = "<group>"; };
-		D44F8FD11DE2F33A00499620 /* SearchLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLocationCell.swift; sourceTree = "<group>"; };
 		D44F8FD51DE2FAAD00499620 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D44F8FD71DE303BD00499620 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D45F6F041DD277B900CAEE60 /* ProximityReminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProximityReminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,7 +85,6 @@
 		D44D09F31DDBE19800E2B7CA /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
-				D44D09F11DDBE18D00E2B7CA /* KMPlaceholderTextView.swift */,
 			);
 			name = "3rd Party";
 			sourceTree = "<group>";
@@ -98,8 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				D4AFBFDF1DD2EE7F00A07902 /* ReminderCell.swift */,
-				D44D09EF1DDBDB5400E2B7CA /* ReminderTitleCell.swift */,
-				D44F8FD11DE2F33A00499620 /* SearchLocationCell.swift */,
 			);
 			name = "Custom TableView Cells";
 			sourceTree = "<group>";
@@ -138,8 +131,9 @@
 				D4342E6B1DD27C4A004ED81D /* ReminderTableViewController.swift */,
 				D44D09ED1DDBD06200E2B7CA /* ReminderDetailTableViewController.swift */,
 				D44F8FCF1DE2E67000499620 /* SearchLocationTableViewController.swift */,
-				D4AFBFE21DD2EFAE00A07902 /* CoreDataManager.swift */,
 				D44F8FD71DE303BD00499620 /* LocationManager.swift */,
+				D4AFBFE21DD2EFAE00A07902 /* CoreDataManager.swift */,
+				D44C2F951DE6E84E0011236D /* Utilities.swift */,
 				D44F8FD31DE2F33D00499620 /* Custom TableView Cells */,
 				D44D09F31DDBE19800E2B7CA /* 3rd Party */,
 				D45F6F0B1DD277B900CAEE60 /* Main.storyboard */,
@@ -265,15 +259,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D45F6F101DD277B900CAEE60 /* ProximityReminders.xcdatamodeld in Sources */,
-				D44D09F21DDBE18D00E2B7CA /* KMPlaceholderTextView.swift in Sources */,
 				D45F6F081DD277B900CAEE60 /* AppDelegate.swift in Sources */,
 				D44F8FD81DE303BD00499620 /* LocationManager.swift in Sources */,
-				D44D09F01DDBDB5400E2B7CA /* ReminderTitleCell.swift in Sources */,
 				D44D09EE1DDBD06200E2B7CA /* ReminderDetailTableViewController.swift in Sources */,
+				D44C2F961DE6E84E0011236D /* Utilities.swift in Sources */,
 				D4342E6C1DD27C4A004ED81D /* ReminderTableViewController.swift in Sources */,
 				D44F8FD01DE2E67000499620 /* SearchLocationTableViewController.swift in Sources */,
 				D4AFBFE31DD2EFAE00A07902 /* CoreDataManager.swift in Sources */,
-				D44F8FD21DE2F33A00499620 /* SearchLocationCell.swift in Sources */,
 				D4AFBFE01DD2EE7F00A07902 /* ReminderCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

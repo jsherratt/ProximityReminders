@@ -7,11 +7,13 @@
     </entity>
     <entity name="Reminder" representedClassName="Reminder" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isCompleted" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="text" attributeType="String" syncable="YES"/>
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="reminder" inverseEntity="Location" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Reminder" positionX="-63" positionY="-18" width="128" height="90"/>
         <element name="Location" positionX="-54" positionY="9" width="128" height="90"/>
+        <element name="Reminder" positionX="-560" positionY="-24" width="128" height="120"/>
     </elements>
 </model>

@@ -7,19 +7,24 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ReminderDetailViewController: UITableViewController {
+class ReminderDetailViewController: UITableViewController, writeLocationBackDelegate {
     
     //---------------------
     //MARK: Variables
     //---------------------
-    
+    var reminder: Reminder?
+    let coreDataManager = CoreDataManager()
+    let locationManager = LocationManager()
+    var location: CLLocation?
     
     //---------------------
     //MARK: Outlets
     //---------------------
-    @IBOutlet weak var titleCell: ReminderTitleCell!
+    @IBOutlet weak var reminderTitleLabel: UILabel!
     @IBOutlet weak var locationCell: UITableViewCell!
+    @IBOutlet weak var locationSwitch: UISwitch!
     
     //---------------------
     //MARK: View
@@ -34,9 +39,31 @@ class ReminderDetailViewController: UITableViewController {
         //Customise tableview
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
-        //Set textview delegate to title cell
-        titleCell.textView.delegate = self
-
+        //Set the text of the location cell
+        locationCell.textLabel?.text = "Location"
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let reminder = self.reminder {
+            
+            self.reminderTitleLabel.text = reminder.text
+            
+            if let location = reminder.location {
+                
+                print(location.latitude)
+                locationCell.detailTextLabel?.text = ""
+                locationCell.isHidden = false
+            }
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.location = nil
     }
 
     //---------------------
@@ -53,14 +80,7 @@ class ReminderDetailViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if indexPath.section == 0 && indexPath.row == 0 {
-            
-            if titleCell.textView.text.characters.count == 0 {
-                return 44.0
-            }else {
-                return UITableViewAutomaticDimension
-            }
-        }else if indexPath.section == 1 && indexPath.row == 1 {
+        if indexPath.section == 1 && indexPath.row == 1 {
             
             return 64.0
         }
@@ -77,43 +97,71 @@ class ReminderDetailViewController: UITableViewController {
     //MARK: Button Actions
     //---------------------
     @IBAction func toggleValueChanged(_ sender: UISwitch) {
-        if sender.isOn {
-            sender.setOn(false, animated: true)
-            locationCell.isHidden = true
+        
+        if let reminder = self.reminder {
+            
+            if sender.isOn {
+                sender.setOn(false, animated: true)
+                locationCell.isHidden = true
+                    
+                reminder.location = nil
+                    
+                coreDataManager.saveContext()
+                
+                
+            }else {
+                sender.setOn(true, animated: true)
+                locationCell.isHidden = false
+            }
             
         }else {
-            sender.setOn(true, animated: true)
-            locationCell.isHidden = false
+            showAlert(with: "Oops", andMessage: "You must enter a name for your reminder first")
+            sender.setOn(false, animated: true)
+        }
+    }
+    
+    func writeLocationBack(toLocation: CLLocation) {
+        
+        self.location = toLocation
+        print(toLocation.coordinate.latitude, toLocation.coordinate.longitude)
+        
+        //locationManager.reverseLocation(location: self.location, completion: <#T##(String, String?, String, String, String) -> Void#>)
+    }
+    
+    @objc func saveReminder() {
+        
+        if let reminder = self.reminder, let location = self.location  {
+            
+            let locationToSave = Location(entity: Location.entity(), insertInto: coreDataManager.managedObjectContext)
+            
+            locationToSave.latitude = location.coordinate.latitude
+            locationToSave.longitude = location.coordinate.longitude
+            
+            reminder.location = locationToSave
+            
+            coreDataManager.saveContext()
         }
     }
     
     //---------------------
-    //MARK: Functions
+    //MARK: Navigation
     //---------------------
-    @objc func saveReminder() {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        
+        if segue.identifier == "SearchLocationView" {
+            
+            let searchLocationDetailVc = segue.destination as! SearchLocationTableViewController
+            
+            if let reminder = self.reminder {
+                
+                searchLocationDetailVc.reminder = reminder
+                searchLocationDetailVc.delegate = self
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
-}
-
-//---------------------
-//MARK: Extension
-//---------------------
-extension ReminderDetailViewController: UITextViewDelegate {
-    
-    //Update tableview cell when user is typing
-    func textViewDidChange(_ textView: UITextView) {
-
-        let currentOffset = tableView.contentOffset
-        UIView.setAnimationsEnabled(false)
-        tableView.beginUpdates()
-        tableView.endUpdates()
-        UIView.setAnimationsEnabled(true)
-        tableView.setContentOffset(currentOffset, animated: false)
-    }
 }

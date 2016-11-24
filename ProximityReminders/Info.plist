@@ -34,7 +34,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Proximity Reminders  requires access to your phone’s location to notify you when you enter or leave a geofence</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Proximity Reminders needs access to your location so you can set the location for a reminder</string>
+	<string>Proximity Reminders  requires access to your phone’s location to notify you when you enter or leave a geofence</string>
 </dict>
 </plist>

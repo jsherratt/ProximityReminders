@@ -38,7 +38,7 @@ public class CoreDataManager {
     lazy var fetchedResultsController: NSFetchedResultsController<Reminder> = {
         
         let fetchRequest: NSFetchRequest = Reminder.fetchRequest()
-        let sortDiscriptor = NSSortDescriptor(key: "date", ascending: true)
+        let sortDiscriptor = NSSortDescriptor(key: "date", ascending: false)
         fetchRequest.sortDescriptors = [sortDiscriptor]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
@@ -59,30 +59,33 @@ public class CoreDataManager {
                 let error = error as NSError
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
+        }else {
+            print("Does not have changes")
         }
     }
     
-    //Save note
+    //Save Reminder
     func saveReminder(withText text: String, andLocation location: CLLocation?) {
         
-        let reminder = Reminder(context: self.managedObjectContext)
+        let reminder = Reminder(entity: Reminder.entity(), insertInto: self.managedObjectContext)
         reminder.text = text
         reminder.date = NSDate()
+        reminder.identifier = String(describing: Date())
         
         if let location = location {
-            reminder.location = self.saveLocation(location: location)
+            reminder.location = self.saveLocation(withLatitude: location.coordinate.latitude, andLongitude: location.coordinate.longitude, andReminder: reminder)
         }
         
         self.saveContext()
     }
     
     //Save location
-    func saveLocation(location: CLLocation) -> Location {
+    func saveLocation(withLatitude latitude: Double, andLongitude longitude: Double, andReminder reminder: Reminder) -> Location {
         
         let loc = Location(context: self.managedObjectContext)
         
-        loc.latitude = location.coordinate.latitude
-        loc.longitude = location.coordinate.longitude
+        loc.latitude = latitude
+        loc.longitude = longitude
         
         return loc
     }
