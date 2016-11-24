@@ -15,9 +15,10 @@ class ReminderDetailViewController: UITableViewController, writeLocationBackDele
     //MARK: Variables
     //---------------------
     var reminder: Reminder?
-    let coreDataManager = CoreDataManager()
+    let coreDataManager = CoreDataManager.sharedInstance
     let locationManager = LocationManager()
     var location: CLLocation?
+    var event: String?
     
     //---------------------
     //MARK: Outlets
@@ -34,13 +35,13 @@ class ReminderDetailViewController: UITableViewController, writeLocationBackDele
         
         //Customise navigation bar
         navigationItem.title = "Details"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveReminder))
         
         //Customise tableview
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         //Set the text of the location cell
         locationCell.textLabel?.text = "Location"
+        locationCell.detailTextLabel?.text = ""
         
     }
     
@@ -51,10 +52,13 @@ class ReminderDetailViewController: UITableViewController, writeLocationBackDele
             
             self.reminderTitleLabel.text = reminder.text
             
-            if let location = reminder.location {
+            if reminder.location != nil {
                 
-                print(location.latitude)
-                locationCell.detailTextLabel?.text = ""
+                locationCell.detailTextLabel?.text = "-"
+                
+                reverseLocation()
+                
+                locationSwitch.setOn(true, animated: false)
                 locationCell.isHidden = false
             }
         }
@@ -120,15 +124,18 @@ class ReminderDetailViewController: UITableViewController, writeLocationBackDele
         }
     }
     
-    func writeLocationBack(toLocation: CLLocation) {
+    func writeLocationBack(toLocation: CLLocation, event: String) {
         
         self.location = toLocation
-        print(toLocation.coordinate.latitude, toLocation.coordinate.longitude)
+        self.event = event
         
-        //locationManager.reverseLocation(location: self.location, completion: <#T##(String, String?, String, String, String) -> Void#>)
+        saveReminder()
+        
+        locationCell.detailTextLabel?.text = "-"
+        reverseLocation()
     }
     
-    @objc func saveReminder() {
+    func saveReminder() {
         
         if let reminder = self.reminder, let location = self.location  {
             
@@ -136,10 +143,22 @@ class ReminderDetailViewController: UITableViewController, writeLocationBackDele
             
             locationToSave.latitude = location.coordinate.latitude
             locationToSave.longitude = location.coordinate.longitude
+            locationToSave.event = self.event
             
             reminder.location = locationToSave
             
             coreDataManager.saveContext()
+        }
+    }
+    
+    func reverseLocation() {
+        
+        if let locationToReverse = reminder?.location, let event = reminder?.location?.event {
+            
+            locationManager.reverseLocation(location: locationToReverse) { (name) in
+                
+                self.locationCell.detailTextLabel?.text = "\(event): \(name)"
+            }
         }
     }
     

@@ -44,40 +44,18 @@ class LocationManager: NSObject {
             //manager.requestAlwaysAuthorization()
         }
     }
-
-    //Get a location from coordinates
-    func getPlacemark(forLocation location: CLLocation, completionHandler: @escaping (CLPlacemark?, String?) -> ()) {
-        
-        geoCoder.reverseGeocodeLocation(location, completionHandler: { placemarks, error in
-            
-            if let error = error {
-                completionHandler(nil, error.localizedDescription)
-                
-            } else if let placemarkArray = placemarks {
-                
-                if let placemark = placemarkArray.first {
-                    completionHandler(placemark, nil)
-                    
-                } else {
-                    completionHandler(nil, "Placemark was nil")
-                }
-            } else {
-                completionHandler(nil, "Unknown error")
-            }
-        })
-    }
     
-    //MARK: - Reverse location
-    func reverseLocation(location: Location, completion: @escaping (_ streetAddress: String, _ houseNumber: String?, _ postalCode: String, _ city: String, _ country: String) -> Void) {
+    //Reverse location
+    func reverseLocation(location: Location, completion: @escaping (_ name: String) -> Void) {
+        
         let locationToReverse = CLLocation(latitude: location.latitude, longitude: location.longitude)
         
         self.geoCoder.reverseGeocodeLocation(locationToReverse) { placemarks, error in
             if let placemark = placemarks?.first {
-                guard let streedAddress = placemark.thoroughfare, let postalCode = placemark.postalCode, let city = placemark.locality, let country = placemark.country else { return }
                 
-                let houseNumber = placemark.subThoroughfare
+                guard let name = placemark.locality else { return }
                 
-                completion(streedAddress, houseNumber, postalCode, city, country)
+                completion(name)
             }
         }
     }

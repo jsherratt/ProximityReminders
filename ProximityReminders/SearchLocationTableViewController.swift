@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 
 protocol writeLocationBackDelegate: class {
-    func writeLocationBack(toLocation: CLLocation)
+    func writeLocationBack(toLocation: CLLocation, event: String)
 }
 
 class SearchLocationTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
@@ -25,6 +25,7 @@ class SearchLocationTableViewController: UIViewController, UITableViewDelegate, 
     var reminder: Reminder?
     var locations: [MKMapItem] = []
     var locationToPassBack: CLLocation?
+    var event = "Arriving"
     weak var delegate: writeLocationBackDelegate?
     
     //---------------------
@@ -51,7 +52,7 @@ class SearchLocationTableViewController: UIViewController, UITableViewDelegate, 
         super.viewWillDisappear(animated)
         
         if let location = self.locationToPassBack {
-            delegate?.writeLocationBack(toLocation: location)
+            delegate?.writeLocationBack(toLocation: location, event: event)
         }
     }
     
@@ -69,7 +70,24 @@ class SearchLocationTableViewController: UIViewController, UITableViewDelegate, 
         segmentedControl.removeFromSuperview()
         mapView = nil
     }
-
+    
+    //---------------------
+    //MARK: Button Actions
+    //---------------------
+    @IBAction func eventChanged(_ sender: UISegmentedControl) {
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            self.event = "Arriving"
+            
+        case 1:
+            self.event = "Leaving"
+            
+        default:
+            break;
+        }
+    }
+    
     //---------------------
     //MARK: Table View
     //---------------------
@@ -96,6 +114,7 @@ class SearchLocationTableViewController: UIViewController, UITableViewDelegate, 
         let selectedLocation = locations[indexPath.row].placemark
         locationManager.dropPinZoomIn(placemark: selectedLocation, mapView: self.mapView)
         print(selectedLocation.coordinate)
+        print(selectedLocation.name!)
         
         locationToPassBack = CLLocation(latitude: selectedLocation.coordinate.latitude, longitude: selectedLocation.coordinate.longitude)
         

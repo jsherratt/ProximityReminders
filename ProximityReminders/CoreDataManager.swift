@@ -73,19 +73,21 @@ public class CoreDataManager {
         reminder.identifier = String(describing: Date())
         
         if let location = location {
-            reminder.location = self.saveLocation(withLatitude: location.coordinate.latitude, andLongitude: location.coordinate.longitude, andReminder: reminder)
+            reminder.location = self.saveLocation(location: location)
         }
         
         self.saveContext()
     }
     
     //Save location
-    func saveLocation(withLatitude latitude: Double, andLongitude longitude: Double, andReminder reminder: Reminder) -> Location {
+    func saveLocation(location: CLLocation) -> Location {
         
         let loc = Location(entity: Reminder.entity(), insertInto: self.managedObjectContext)
         
-        loc.latitude = latitude
-        loc.longitude = longitude
+        loc.latitude = location.coordinate.latitude
+        loc.longitude = location.coordinate.longitude
+        loc.event = ""
+        
         
         return loc
     }
