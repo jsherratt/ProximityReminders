@@ -82,7 +82,7 @@ public class CoreDataManager {
     //Save location
     func saveLocation(withLatitude latitude: Double, andLongitude longitude: Double, andReminder reminder: Reminder) -> Location {
         
-        let loc = Location(context: self.managedObjectContext)
+        let loc = Location(entity: Reminder.entity(), insertInto: self.managedObjectContext)
         
         loc.latitude = latitude
         loc.longitude = longitude
