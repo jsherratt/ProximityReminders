@@ -8,20 +8,27 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    let coreDataManager = CoreDataManager()
+    let coreDataManager = CoreDataManager.sharedInstance
+    let locationManager = LocationManager()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
         //White status bar
         UIApplication.shared.statusBarStyle = .lightContent
+        
+        //Request notification authorisation
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { success, error in }
+        
+        
         
         return true
     }

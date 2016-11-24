@@ -19,6 +19,7 @@
 		D45F6F151DD277B900CAEE60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D45F6F131DD277B900CAEE60 /* LaunchScreen.storyboard */; };
 		D45F6F201DD277B900CAEE60 /* ProximityRemindersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F6F1F1DD277B900CAEE60 /* ProximityRemindersTests.swift */; };
 		D46715881DE73C3F00C55837 /* ProximityReminders.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D46715861DE73C3F00C55837 /* ProximityReminders.xcdatamodeld */; };
+		D46715AD1DE754BC00C55837 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46715AC1DE754BC00C55837 /* NotificationManager.swift */; };
 		D4AFBFE01DD2EE7F00A07902 /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AFBFDF1DD2EE7F00A07902 /* ReminderCell.swift */; };
 		D4AFBFE31DD2EFAE00A07902 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AFBFE21DD2EFAE00A07902 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		D45F6F1F1DD277B900CAEE60 /* ProximityRemindersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProximityRemindersTests.swift; sourceTree = "<group>"; };
 		D45F6F211DD277B900CAEE60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D46715871DE73C3F00C55837 /* ProximityReminders.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProximityReminders.xcdatamodel; sourceTree = "<group>"; };
+		D46715AC1DE754BC00C55837 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		D4AFBFDF1DD2EE7F00A07902 /* ReminderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderCell.swift; sourceTree = "<group>"; };
 		D4AFBFE21DD2EFAE00A07902 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +136,7 @@
 				D44F8FCF1DE2E67000499620 /* SearchLocationTableViewController.swift */,
 				D44F8FD71DE303BD00499620 /* LocationManager.swift */,
 				D4AFBFE21DD2EFAE00A07902 /* CoreDataManager.swift */,
+				D46715AC1DE754BC00C55837 /* NotificationManager.swift */,
 				D44C2F951DE6E84E0011236D /* Utilities.swift */,
 				D44F8FD31DE2F33D00499620 /* Custom TableView Cells */,
 				D44D09F31DDBE19800E2B7CA /* 3rd Party */,
@@ -260,6 +263,7 @@
 			files = (
 				D45F6F081DD277B900CAEE60 /* AppDelegate.swift in Sources */,
 				D46715881DE73C3F00C55837 /* ProximityReminders.xcdatamodeld in Sources */,
+				D46715AD1DE754BC00C55837 /* NotificationManager.swift in Sources */,
 				D44F8FD81DE303BD00499620 /* LocationManager.swift in Sources */,
 				D44D09EE1DDBD06200E2B7CA /* ReminderDetailTableViewController.swift in Sources */,
 				D44C2F961DE6E84E0011236D /* Utilities.swift in Sources */,

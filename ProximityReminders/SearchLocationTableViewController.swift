@@ -25,7 +25,7 @@ class SearchLocationTableViewController: UIViewController, UITableViewDelegate, 
     var reminder: Reminder?
     var locations: [MKMapItem] = []
     var locationToPassBack: CLLocation?
-    var event = "Arriving"
+    var event = "Leaving"
     weak var delegate: writeLocationBackDelegate?
     
     //---------------------

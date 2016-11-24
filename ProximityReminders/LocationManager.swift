@@ -40,8 +40,8 @@ class LocationManager: NSObject {
     fileprivate func getPermission() {
         
         if CLLocationManager.authorizationStatus() == .notDetermined {
-            manager.requestWhenInUseAuthorization()
-            //manager.requestAlwaysAuthorization()
+            //manager.requestWhenInUseAuthorization()
+            manager.requestAlwaysAuthorization()
         }
     }
     
@@ -115,7 +115,7 @@ extension LocationManager: CLLocationManagerDelegate {
     //------------------------
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
-        if status == .authorizedWhenInUse {
+        if status == .authorizedAlways {
             manager.requestLocation()
         }
     }

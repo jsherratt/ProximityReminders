@@ -17,8 +17,10 @@ class ReminderDetailViewController: UITableViewController, writeLocationBackDele
     var reminder: Reminder?
     let coreDataManager = CoreDataManager.sharedInstance
     let locationManager = LocationManager()
+    var notificationManager = NotificationManager()
     var location: CLLocation?
     var event: String?
+    var eventBool: Bool?
     
     //---------------------
     //MARK: Outlets
@@ -133,6 +135,20 @@ class ReminderDetailViewController: UITableViewController, writeLocationBackDele
         
         locationCell.detailTextLabel?.text = "-"
         reverseLocation()
+        
+        if event == "Arriving" {
+            
+            eventBool = true
+            print("Arrive at location")
+        }else {
+            eventBool = false
+        }
+        
+        if let reminder = self.reminder, let eventBool = self.eventBool {
+            
+            let locationEvent = notificationManager.addLocationEvent(forReminder: reminder, whenLeaving: eventBool)
+            notificationManager.scheduleNewNotification(withReminder: reminder, locationTrigger: locationEvent)
+        }
     }
     
     func saveReminder() {
