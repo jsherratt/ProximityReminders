@@ -64,8 +64,6 @@ class ReminderTableViewController: UITableViewController {
         
         let reminder = coreDataManager.fetchedResultsController.object(at: indexPath)
         cell.configure(withReminder: reminder)
-        
-        print(reminder.entity.description)
 
         return cell
     }
