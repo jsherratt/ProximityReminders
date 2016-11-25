@@ -23,6 +23,12 @@ class ReminderCell: UITableViewCell {
     func configure(withReminder reminder: Reminder) {
         
         self.titleLabel.text = reminder.text
+        
+        if reminder.isCompleted {
+            self.accessoryType = .checkmark
+        }else {
+            self.accessoryType = .disclosureIndicator
+        }
     }
 
 }

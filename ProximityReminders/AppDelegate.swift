@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 import UserNotifications
 
 @UIApplicationMain
@@ -26,9 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Request notification authorisation
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { success, error in }
-        
-        
+        center.requestAuthorization(options: [.alert, .sound]) { granted, error in }
         
         return true
     }
@@ -60,4 +59,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
 

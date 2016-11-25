@@ -30,10 +30,12 @@ struct NotificationManager {
             switch whenLeaving {
                 
             case true:
+                print("On exit")
                 region.notifyOnExit = true
                 region.notifyOnEntry = false
                 
             case false:
+                print("On entry")
                 region.notifyOnExit = false
                 region.notifyOnEntry = true
             }

@@ -84,14 +84,6 @@
 			name = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		D44D09F31DDBE19800E2B7CA /* 3rd Party */ = {
-			isa = PBXGroup;
-			children = (
-				D46715861DE73C3F00C55837 /* ProximityReminders.xcdatamodeld */,
-			);
-			name = "3rd Party";
-			sourceTree = "<group>";
-		};
 		D44F8FD31DE2F33D00499620 /* Custom TableView Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,12 +126,10 @@
 				D4342E6B1DD27C4A004ED81D /* ReminderTableViewController.swift */,
 				D44D09ED1DDBD06200E2B7CA /* ReminderDetailTableViewController.swift */,
 				D44F8FCF1DE2E67000499620 /* SearchLocationTableViewController.swift */,
-				D44F8FD71DE303BD00499620 /* LocationManager.swift */,
-				D4AFBFE21DD2EFAE00A07902 /* CoreDataManager.swift */,
-				D46715AC1DE754BC00C55837 /* NotificationManager.swift */,
 				D44C2F951DE6E84E0011236D /* Utilities.swift */,
+				D46BD50A1DE8AEEF005AA4DD /* Models */,
 				D44F8FD31DE2F33D00499620 /* Custom TableView Cells */,
-				D44D09F31DDBE19800E2B7CA /* 3rd Party */,
+				D46715861DE73C3F00C55837 /* ProximityReminders.xcdatamodeld */,
 				D45F6F0B1DD277B900CAEE60 /* Main.storyboard */,
 				D45F6F111DD277B900CAEE60 /* Assets.xcassets */,
 				D4342E6D1DD27CD7004ED81D /* SupportingFiles */,
@@ -154,6 +144,16 @@
 				D45F6F211DD277B900CAEE60 /* Info.plist */,
 			);
 			path = ProximityRemindersTests;
+			sourceTree = "<group>";
+		};
+		D46BD50A1DE8AEEF005AA4DD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D4AFBFE21DD2EFAE00A07902 /* CoreDataManager.swift */,
+				D44F8FD71DE303BD00499620 /* LocationManager.swift */,
+				D46715AC1DE754BC00C55837 /* NotificationManager.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +208,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = T2WARM6VRQ;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					D45F6F1A1DD277B900CAEE60 = {
 						CreatedOnToolsVersion = 8.1;

@@ -10,6 +10,9 @@ import UIKit
 import MapKit
 import CoreLocation
 
+//---------------------
+//MARK: Protocol
+//---------------------
 protocol writeLocationBackDelegate: class {
     func writeLocationBack(toLocation: CLLocation, event: String)
 }
@@ -79,7 +82,7 @@ class SearchLocationTableViewController: UIViewController, UITableViewDelegate, 
         switch sender.selectedSegmentIndex {
         case 0:
             self.event = "Arriving"
-            
+
         case 1:
             self.event = "Leaving"
             
@@ -151,12 +154,13 @@ class SearchLocationTableViewController: UIViewController, UITableViewDelegate, 
         
         //Clear existing pins
         mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
         
         let annotation = MKPointAnnotation()
         annotation.coordinate = mapView.userLocation.coordinate
         mapView.addAnnotation(annotation)
         
-        let span = MKCoordinateSpanMake(0.01, 0.01)
+        let span = MKCoordinateSpanMake(0.005, 0.005)
         let region = MKCoordinateRegionMake(mapView.userLocation.coordinate, span)
         mapView.setRegion(region, animated: true)
         

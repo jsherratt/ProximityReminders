@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 class ReminderTableViewController: UITableViewController {
     
@@ -16,6 +17,7 @@ class ReminderTableViewController: UITableViewController {
     //---------------------
     let coreDataManager = CoreDataManager.sharedInstance
     var selectedReminder: Reminder?
+    let notificationCenter = UNUserNotificationCenter.current()
     
     //---------------------
     //MARK: View
@@ -27,10 +29,6 @@ class ReminderTableViewController: UITableViewController {
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         navigationItem.title = "Reminders"
-        
-        //Customise  tableview
-        tableView.estimatedRowHeight = 44.0
-        tableView.rowHeight = UITableViewAutomaticDimension
         
         //Set fetched results controller delegate
         coreDataManager.fetchedResultsController.delegate = self
@@ -75,13 +73,33 @@ class ReminderTableViewController: UITableViewController {
         performSegue(withIdentifier: "ReminderDetail", sender: self)
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        if editingStyle == .delete {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { action, indexPath in
 
-            let reminder = coreDataManager.fetchedResultsController.object(at: indexPath)
-            coreDataManager.deleteReminder(reminder: reminder)
+            let reminder = self.coreDataManager.fetchedResultsController.object(at: indexPath)
+            
+            if let _ = reminder.location, let identifier = reminder.identifier {
+                self.notificationCenter.removePendingNotificationRequests(withIdentifiers: [identifier])
+            }
+            
+            self.coreDataManager.deleteReminder(reminder: reminder)
         }
+        
+        let complete = UITableViewRowAction(style: .normal, title: "Completed") { action, indexPath in
+         
+            let reminder = self.coreDataManager.fetchedResultsController.object(at: indexPath)
+            reminder.isCompleted = true
+            
+            if let _ = reminder.location, let identifier = reminder.identifier {
+                self.notificationCenter.removePendingNotificationRequests(withIdentifiers: [identifier])
+                self.notificationCenter.removeDeliveredNotifications(withIdentifiers: [identifier])
+            }
+            
+            self.coreDataManager.saveContext()
+        }
+        
+        return [delete, complete]
     }
     
     //---------------------
@@ -92,12 +110,14 @@ class ReminderTableViewController: UITableViewController {
         let alertController = UIAlertController(title: "New Reminder", message: nil, preferredStyle: .alert)
         
         let saveAction = UIAlertAction(title: "Save", style: .default) { saveAction in
+            
             let textField = alertController.textFields![0] as UITextField
             self.coreDataManager.saveReminder(withText: textField.text!, andLocation: nil)
         }
         saveAction.isEnabled = false
         
         alertController.addTextField { (textField) in
+            
             textField.placeholder = "Enter a reminder title"
             NotificationCenter.default.addObserver(forName: Notification.Name.UITextFieldTextDidChange, object: textField, queue: OperationQueue.main, using: { (notification) in
                 saveAction.isEnabled = textField.text != ""

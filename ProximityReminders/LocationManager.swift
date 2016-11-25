@@ -27,8 +27,9 @@ class LocationManager: NSObject {
         
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.allowsBackgroundLocationUpdates = true
         
-        //Ask user permission
+        //Get location permission
         getPermission()
     }
     
@@ -46,16 +47,16 @@ class LocationManager: NSObject {
     }
     
     //Reverse location
-    func reverseLocation(location: Location, completion: @escaping (_ name: String) -> Void) {
+    func reverseLocation(location: Location, completion: @escaping (_ city: String, _ street: String) -> Void) {
         
         let locationToReverse = CLLocation(latitude: location.latitude, longitude: location.longitude)
         
         self.geoCoder.reverseGeocodeLocation(locationToReverse) { placemarks, error in
             if let placemark = placemarks?.first {
                 
-                guard let name = placemark.locality else { return }
+                guard let city = placemark.locality, let street = placemark.thoroughfare else { return }
                 
-                completion(name)
+                completion(city, street)
             }
         }
     }
@@ -91,12 +92,13 @@ class LocationManager: NSObject {
         
         //Clear existing pins
         mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
         
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
         mapView.addAnnotation(annotation)
         
-        let span = MKCoordinateSpanMake(0.01, 0.01)
+        let span = MKCoordinateSpanMake(0.005, 0.005)
         let region = MKCoordinateRegionMake(placemark.coordinate, span)
         mapView.setRegion(region, animated: true)
         

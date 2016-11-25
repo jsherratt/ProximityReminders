@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import UserNotifications
 
 class ReminderDetailViewController: UITableViewController, writeLocationBackDelegate {
     
@@ -18,6 +19,7 @@ class ReminderDetailViewController: UITableViewController, writeLocationBackDele
     let coreDataManager = CoreDataManager.sharedInstance
     let locationManager = LocationManager()
     var notificationManager = NotificationManager()
+    let notificationCenter = UNUserNotificationCenter.current()
     var location: CLLocation?
     var event: String?
     var eventBool: Bool?
@@ -111,6 +113,7 @@ class ReminderDetailViewController: UITableViewController, writeLocationBackDele
                 locationCell.isHidden = true
                     
                 reminder.location = nil
+                //notificationCenter.removePendingNotificationRequests(withIdentifiers: [reminder.identifier!])
                     
                 coreDataManager.saveContext()
                 
@@ -136,10 +139,9 @@ class ReminderDetailViewController: UITableViewController, writeLocationBackDele
         locationCell.detailTextLabel?.text = "-"
         reverseLocation()
         
-        if event == "Arriving" {
+        if event == "Leaving" {
             
             eventBool = true
-            print("Arrive at location")
         }else {
             eventBool = false
         }
@@ -171,9 +173,9 @@ class ReminderDetailViewController: UITableViewController, writeLocationBackDele
         
         if let locationToReverse = reminder?.location, let event = reminder?.location?.event {
             
-            locationManager.reverseLocation(location: locationToReverse) { (name) in
+            locationManager.reverseLocation(location: locationToReverse) { (city, street) in
                 
-                self.locationCell.detailTextLabel?.text = "\(event): \(name)"
+                self.locationCell.detailTextLabel?.text = "\(event): \(city), \(street)"
             }
         }
     }

@@ -86,8 +86,6 @@ public class CoreDataManager {
         
         loc.latitude = location.coordinate.latitude
         loc.longitude = location.coordinate.longitude
-        loc.event = ""
-        
         
         return loc
     }

@@ -20,6 +20,14 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Proximity Reminders requires access to your phone’s location to notify you when you enter or leave a geofence.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Proximity Reminders needs access to your location data.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>Main</string>
 	<key>UIMainStoryboardFile</key>
@@ -34,9 +42,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Proximity Reminders requires access to your phone’s location to notify you when you enter or leave a geofence.</string>
-	<key>NSLocationUsageDescription</key>
-	<string>Proximity Reminders needs access to your location data.</string>
 </dict>
 </plist>
